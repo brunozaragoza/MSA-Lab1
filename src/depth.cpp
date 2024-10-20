@@ -14,14 +14,8 @@ public:
              /* Find the surface that is visible in the requested direction */
       Intersection its;
         if (scene->rayIntersect(ray, its)){
-        EmitterQueryRecord emitterRecord(its.p);
-
-        const std::vector<Emitter *> lights = scene->getLights();
-
-        const Emitter *em = lights[0];
-        Color3f Le = em->sample(emitterRecord, sampler->next2D(), 0.);
-        float d= emitterRecord.dist;   
-        return (1/d);
+        float d= sqrt(its.p.x()*its.p.x() + its.p.y()*its.p.y()+its.p.z()*its.p.z());   
+        return (1./d);
         }
         else{
             return 0.;
