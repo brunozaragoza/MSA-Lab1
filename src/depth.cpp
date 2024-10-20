@@ -14,11 +14,11 @@ public:
              /* Find the surface that is visible in the requested direction */
       Intersection its;
         if (scene->rayIntersect(ray, its)){
-        float d= sqrt(its.p.x()*its.p.x() + its.p.y()*its.p.y()+its.p.z()*its.p.z());   
-        return d;
+        float d= its.t;
+        return 1/d;
         }
         else{
-            return 0.;
+            return scene->getBackground(ray);;
         }
 
   }
