@@ -15,7 +15,7 @@ public:
       Intersection its;
         if (scene->rayIntersect(ray, its)){
         float d= sqrt(its.p.x()*its.p.x() + its.p.y()*its.p.y()+its.p.z()*its.p.z());   
-        return (1./d);
+        return d;
         }
         else{
             return 0.;
